@@ -1,7 +1,13 @@
-import { registerService } from "../service/auth.service.js"
+import { registerService } from "../service/auth.service.js";
+import ApiResponse from "../utils/apiResponse.js";
+import asyncHandle from "../utils/asyncHandle.js";
 
- export const registerController =async (req,res)=>{
+export const registerController = asyncHandle(async (req, res) => {
+  const { newUser, token } = await registerService(req);
 
-    const data = await registerService()
-}
-
+  res.cookie("token", token);
+  
+  return res
+    .status(201)
+    .json(new ApiResponse("User Register Successfully", newUser));
+});
