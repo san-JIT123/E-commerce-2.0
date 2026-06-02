@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
   {
-    name: {
+    productName: {
       type: String,
       required: [true, "Product name is required"],
       trim: true,
-      minlength: [3, "Product name must be at least 3 characters"],
+      minlength: [1, "Product name must be at least 1 characters"],
       maxlength: [120, "Product name cannot exceed 120 characters"],
     },
 
@@ -52,6 +52,6 @@ const productSchema = new mongoose.Schema(
   },
 );
 
-const Product = mongoose.model("Product", productSchema);
+const ProductModel = mongoose.model("Product", productSchema);
 
-export default Product;
+export default ProductModel;
