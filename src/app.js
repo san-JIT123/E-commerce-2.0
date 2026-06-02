@@ -4,8 +4,9 @@ import errorMiddleware from "./middleware/error.Middleware.js";
 import cookieParser from "cookie-parser";
 const app = express();
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser());
 app.use("/api/auth", authRouter);
+app.use("/api/product", authRouter);
 
 app.use(errorMiddleware);
 export default app;
